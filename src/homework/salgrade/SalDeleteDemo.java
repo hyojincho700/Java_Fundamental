@@ -5,7 +5,7 @@ import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
 
-public class SalUpdateDemo {
+public class SalDeleteDemo {
 	public static void main(String[] args) {
 		
 		try {
@@ -16,23 +16,23 @@ public class SalUpdateDemo {
 		}
 		
 		Connection con = null;
-		PreparedStatement pstmt = null;
+		PreparedStatement pstmt = null;	
 		
 		try {
 			con = DriverManager.getConnection("jdbc:mysql://localhost:3306/acorn", "acorn12", "acorn12");
 			
 			StringBuffer sql = new StringBuffer();
-			sql.append("UPDATE salgrade ");
-			sql.append("SET hisal = ? ");
-			sql.append("WHERE losal = ?");
-
+			sql.append("DELETE ");
+			sql.append("from salgrade ");
+			sql.append("WHERE grade = ?");
+			
 			pstmt = con.prepareStatement(sql.toString());
 			
-			pstmt.setInt(1, 11000);
-			pstmt.setInt(2, 10000);
+			pstmt.setInt(1, 6);
 			
 			int result = pstmt.executeUpdate();
-			System.out.println("갱신된 행의 개수 : " + result);
+			System.out.println("삭제된 행의 개수 : " + result);
+			
 			
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
@@ -45,6 +45,7 @@ public class SalUpdateDemo {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
+			
 		}
 		
 		
