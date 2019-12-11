@@ -46,7 +46,9 @@ public class TransactionDemo {
 					con.commit(); //모두 수행
 				} else {
 					con.rollback(); //모두 수행하지 않음
-				}
+				} //트랜젝션 끝
+				con.setAutoCommit(true); // 트랜젝션 다 하면 원상복구. 
+										 //connection pool을 사용하는 경우에는 반드시 써야 하는 코드. (자원반납)
 				if (pstmt1 != null) pstmt1.close();
 				if (pstmt2 != null) pstmt2.close();
 				if (con != null) con.close();
