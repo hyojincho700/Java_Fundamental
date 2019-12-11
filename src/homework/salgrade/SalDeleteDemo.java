@@ -36,7 +36,7 @@ public class SalDeleteDemo {
 			
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
-			e.printStackTrace();
+			e.printStackTrace();	
 		} finally {
 			try {
 				if(pstmt != null) pstmt.close();
@@ -50,4 +50,5 @@ public class SalDeleteDemo {
 		
 		
 	}
+	
 }

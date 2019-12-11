@@ -19,13 +19,18 @@ public class DeptDAO {
 			e.printStackTrace();
 		}
 	}
-
+	
+	// 1 singleton pattern
+	//single 변수는 static 메서드에서 사용해야 하기 때문에 static 변수로 설정해야 한다.
 	private static DeptDAO single;
-
-	private DeptDAO() {
+	
+	// 외부에서 객체를 생성할 수 없다.
+	private  DeptDAO() {
 	}
 
-	public static DeptDAO getInstance() {
+	//외부에서 DeptDAO 객체를 생성하기 위해서는 getInstance() 메서드를 이용해야 한다.
+	//따라서 이 메서드에서는 DeptDAO 객체를 하나만 생성할 수 있게 코딩해야 한다. (Singleton)
+	public static  DeptDAO getInstance() {
 		if (single == null) {
 			single = new DeptDAO();
 		}
